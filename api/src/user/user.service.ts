@@ -42,12 +42,20 @@ export class UserService {
     return this.userRepository.find();
   }
 
-  async findOne(uuid: string): Promise<User> {
-    if (!(await this.userExists({ uuid: uuid }))) {
-      throw new BadRequestException('User does not exist');
-    }
+  async findOne({ username=null, uuid=null }): Promise<User> {
+    if (username) {
+      if (!(await this.userExists({ username: username }))) {
+        throw new BadRequestException('User does not exist');
+      }
 
-    return this.userRepository.findOneBy({ uuid });
+      return this.userRepository.findOneBy({ username });
+    } else if (uuid) {
+      if (!(await this.userExists({ uuid: uuid }))) {
+        throw new BadRequestException('User does not exist');
+      }
+
+      return this.userRepository.findOneBy({ uuid });
+    }
   }
 
   async update(uuid: string, updateUserDto: UpdateUserDto): Promise<User> {

@@ -1,5 +1,5 @@
 export class SessionDto {
-  resreshToken: string;
+  refreshToken: string;
   fingerprint: string;
   userAgent: string;
 }
