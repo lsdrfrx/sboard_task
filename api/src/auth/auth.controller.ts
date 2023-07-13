@@ -30,10 +30,10 @@ export class AuthController {
   @Post('refresh')
   async refreshTokens(
     @Req() req: Request,
-    @Body() uuid: string,
+    @Body() payload: any,
   ): Promise<TokenPairDto | null> {
     const refreshToken = req.user['refreshToken'];
-
+    const uuid = payload['uuid'];
     return this.authService.refreshTokens(uuid, refreshToken);
   }
 

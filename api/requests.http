@@ -1,0 +1,54 @@
+### Show all users
+GET http://localhost:3000/user
+
+### Register new user
+POST http://localhost:3000/auth/signup
+Content-Type: application/json
+
+{
+  "username": "lsdrfrx",
+  "password": "asdfgghjlk",
+  "firstname": "Chrison",
+  "lastname": "Chrisonovich",
+  "email": "lsdrfrx@gmail.com"
+}
+
+### Log in with correct credentials 
+POST http://localhost:3000/auth/signin
+Content-Type: application/json
+
+{
+  "username": "lsdrfrx",
+  "password": "asdfgghjlk"
+}
+
+### Log in with wrong credentials
+POST http://localhost:3000/auth/signin
+Content-Type: application/json
+
+{
+  "username": "lsdrfrx",
+  "password": "asdfgghjk"
+}
+
+### Request user info
+GET http://localhost:3000/user/5a6282c8-82b9-4674-98b4-f8fd20bca383
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1YTYyODJjOC04MmI5LTQ2NzQtOThiNC1mOGZkMjBiY2EzODMiLCJ1c2VybmFtZSI6ImxzZHJmcngiLCJ0aW1lc3RhbXAiOjE2ODkyNzEwMTI4NTIsImlhdCI6MTY4OTI3MTAxMiwiZXhwIjoxNjg5MjcxMzEyfQ.OHaIAYjzmNaDs8wL6EFwH_PNV81Cap1QE4hmlirHDy0
+
+### Refresh token pair
+POST http://localhost:3000/auth/refresh
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1YTYyODJjOC04MmI5LTQ2NzQtOThiNC1mOGZkMjBiY2EzODMiLCJ1c2VybmFtZSI6ImxzZHJmcngiLCJ0aW1lc3RhbXAiOjE2ODkyNzE2NTI1OTIsImlhdCI6MTY4OTI3MTY1MiwiZXhwIjoxNjg5ODc2NDUyfQ.qbmRM3cppRkYJpNtLIEsM0yuJmNBoVBTNOqfoCHgykw
+Content-Type: application/json
+
+{
+  "uuid": "5a6282c8-82b9-4674-98b4-f8fd20bca383"
+}
+
+### Update user info
+PATCH http://localhost:3000/user/5a6282c8-82b9-4674-98b4-f8fd20bca383
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1YTYyODJjOC04MmI5LTQ2NzQtOThiNC1mOGZkMjBiY2EzODMiLCJ1c2VybmFtZSI6ImxzZHJmcngiLCJ0aW1lc3RhbXAiOjE2ODkyNzEwMTI4NTIsImlhdCI6MTY4OTI3MTAxMiwiZXhwIjoxNjg5MjcxMzEyfQ.OHaIAYjzmNaDs8wL6EFwH_PNV81Cap1QE4hmlirHDy0
+Content-Type: application/json
+
+{
+  "firstname": "Chrisonchik"
+}

@@ -1,0 +1,27 @@
+services:
+  postgres:
+    image: postgres
+    restart: on-failure
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=pguser
+      - POSTGRES_PASSWORD=pgpassword
+      - POSTGRES_DB=sboard_task
+    volumes:
+      - postgres:/data
+
+  redis:
+    image: redis
+    restart: on-failure
+    ports:
+      - 6379:6379
+    command: redis-server --save 20 1 --loglevel warning --requirepass A3UEbYaagT
+    volumes:
+      - redis:/data
+
+volumes:
+  postgres:
+    driver: local
+  redis:
+    driver: local

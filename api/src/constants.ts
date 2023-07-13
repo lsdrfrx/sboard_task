@@ -1,1 +1,1 @@
-export const ttl = 30 * 24 * 3600;
+export const ttl = 7 * 24 * 3600;
