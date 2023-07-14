@@ -21,7 +21,6 @@ export class UserController {
     return this.userService.findAll();
   }
 
-  @UseGuards(AccessTokenGuard)
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.userService.findOne({ uuid: id });
