@@ -11,6 +11,8 @@ import {
 } from "@mui/material";
 
 import { ChangeEvent, useState } from "react";
+import RegistrationForm from "../../forms/RegistrationForm/RegistrationForm";
+import LoginForm from "../../forms/LoginForm/LoginForm";
 
 export default function Auth() {
   const [currentTab, setCurrentTab] = useState(0);
@@ -18,6 +20,14 @@ export default function Auth() {
   const handleTabChange = (e: any, index: any) => {
     console.log(index);
     setCurrentTab(index);
+  };
+
+  const handleSubmit = (event: any) => {
+    alert();
+    console.log(event.currentTarget);
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    console.log(data.get("username"));
   };
 
   return (
@@ -35,7 +45,10 @@ export default function Auth() {
           <Tab label="Регистрация" />
           <Tab label="Вход" />
         </Tabs>
-        {currentTab === 0 && ()}
+        <Box component="form" onSubmit={handleSubmit} noValidate>
+          {currentTab === 0 && <RegistrationForm />}
+          {currentTab === 1 && <LoginForm />}
+        </Box>
       </Box>
     </Container>
   );
