@@ -20,6 +20,21 @@ services:
     volumes:
       - redis:/data
 
+  api:
+    build: ./api
+    restart: on-failure
+    ports:
+      - 3000:3000
+    environment:
+      - POSTGRES_HOST=postgres
+      - REDIS_HOST=redis
+    depends_on:
+      - postgres
+      - redis
+    links:
+      - postgres
+      - redis
+
 volumes:
   postgres:
     driver: local
